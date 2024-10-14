@@ -1,9 +1,10 @@
 import { ls } from "./commands/ls.js";
+import { up } from "./commands/up.js";
 
 export const commandHandler = (command) => {
     const commandMap = {
       ".exit": () => process.exit(0),
-      "up": () => {},
+      "up": up,
       "cd": () => {},
       "ls": ls,
       "cat": () => {},
