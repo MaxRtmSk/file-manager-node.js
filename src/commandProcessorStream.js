@@ -11,7 +11,7 @@ export const commandProcessorStream = new Transform({
         await commandHandler(command.trim())(...commandContent); 
       } catch (error) {
         // FOR DEBUG:
-        // console.error(error); 
+        console.error(error); 
         console.log('Operation failed');
       }
       
