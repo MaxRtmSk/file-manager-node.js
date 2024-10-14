@@ -4,20 +4,12 @@ import { commandProcessorStream } from "./src/commandProcessorStream.js";
 import { parseArgs } from "./src/args.js"
 import { state } from './src/state.js';
 
-const startingArgs = parseArgs();
- 
-async function main() {
-  try {
-    console.log(`Welcome to the File Manager, ${startingArgs['--username'] || 'Anonum'}!`);
-    console.log(`You are currently in ${state.directory}:`);
-
-    await pipeline(process.stdin, commandProcessorStream, process.stdout);
-  } catch (error) {
-    console.log('Main error')
-  }
-};
+const userName = parseArgs()['--username'] || 'Anonum';
 
 process.on('SIGINT', () => process.exit());
-process.on('exit', () => console.log(`\n Thank you for using File Manager, ${startingArgs['--username'] || 'Anonum'}, goodbye!`));
+process.on('exit', () => console.log(`\n Thank you for using File Manager, ${userName}, goodbye!`));
 
-await main()
+console.log(`Welcome to the File Manager, ${userName}!`);
+console.log(`You are currently in ${state.directory}:`);
+
+await pipeline(process.stdin, commandProcessorStream, process.stdout);

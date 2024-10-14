@@ -1,4 +1,4 @@
-const parseArgs = () => {
+export const parseArgs = () => {
     const obj = {};
 
     process.argv.slice(2).forEach(element => {
@@ -10,5 +10,3 @@ const parseArgs = () => {
 
     return obj
 };
-
-export {parseArgs}

@@ -7,9 +7,11 @@ export const commandProcessorStream = new Transform({
     async transform(chunk, encoding, callback){
       
       try {
-        const [command, ...command_content] = String(chunk).split(" ");
-        await commandHandler(command.trim())(...command_content); 
+        const [command, ...commandContent] = String(chunk).split(" ");
+        await commandHandler(command.trim())(...commandContent); 
       } catch (error) {
+        // FOR DEBUG:
+        // console.error(error); 
         console.log('Operation failed');
       }
       
